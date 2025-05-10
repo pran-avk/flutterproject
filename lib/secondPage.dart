@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterproject/productDisplay.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -79,12 +80,21 @@ class _SecondpageState extends State<Secondpage> {
         children: [
           Expanded(
             flex: 2,
-            child: Row(
-              children: [
-                Expanded(child: Container(color: Colors.red, height: 100)),
-                Expanded(child: Container(color: Colors.blue, height: 100)),
-              ],
-            ),
+              child: ListView(
+                scrollDirection: Axis.horizontal, // Horizontal scrolling
+                children: [
+                  Container(
+                    child: Image.asset('assets/images/all.webp'),
+                  ),
+                  Container(
+                    child: Image.asset('assets/images/appl.webp'),
+                  ),
+                  Container(
+                    child: Image.asset('assets/images/banana.webp'),
+                  ),
+                ],
+              )
+
           ),
           Expanded(
             flex: 4,
@@ -104,9 +114,19 @@ class _SecondpageState extends State<Secondpage> {
                     ),
                     title: Text(items[index]['name']),
                     subtitle: Text("Price: \$${items[index]['price']}"),
-                    onTap: (){
-                      print("tapped${items[index]['name']}");
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => FruitDetailPage(
+                            name: items[index]['name'],
+                            image: items[index]['image'],
+                            price: items[index]['price'],
+                          ),
+                        ),
+                      );
                     },
+
                   ),
                 );
               },
