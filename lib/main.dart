@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     _navigateToSecondPage();
   }
   void _navigateToSecondPage() {
-    Timer(Duration(seconds: 5), () {
+    Timer(Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => Secondpage()),
